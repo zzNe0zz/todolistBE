@@ -1,0 +1,12 @@
+const path = require("path")
+const express = require("express")
+const app = express()
+const cort = require("cors")
+const userRouter = require("./Router/user/userRouter")
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
+app.use(cort())
+app.use(express.static(path.join(__dirname,"./Pulic/Img")))
+app.use("/user",userRouter)
+
+app.listen(4002)
